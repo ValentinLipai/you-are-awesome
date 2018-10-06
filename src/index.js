@@ -8,8 +8,43 @@ const createProtoMagicObject = () => {
     return magic;
 };
 
-const incrementor = () => {};
-const asyncIncrementor = () => {};
+let incrementorCount = 0;
+const incrementor = () => {    
+	
+	incrementorCount++;
+	
+	let increment = function() 
+	{
+		incrementorCount++;
+		return increment;
+	}
+	
+	increment.valueOf = function()
+	{
+		return incrementorCount;
+	}
+	
+	return increment;
+};
+
+let aIncrementorCount = 0;
+const asyncIncrementor = () => {
+	
+	aIncrementorCount++;
+	
+	let aIncrement = function() 
+	{
+		aIncrementorCount++;
+		return aIncrementorCount;
+	}
+	
+	aIncrement.valueOf = function()
+	{
+		return aIncrementorCount;
+	}
+	
+	return aIncrement;
+};
 const createIncrementer = () => {};
 
 // return same argument not earlier than in one second, and not later, than in two
